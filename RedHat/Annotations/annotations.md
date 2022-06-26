@@ -132,7 +132,7 @@ En un enlace que apunta a un copia del archivo original
 
 ## **mkdir**
 |Command|Argument|Action|
-|:-------:|:--------:|------|-------:|
+|:-------:|:--------:|------|
 |mkdir| [directory-path]| *Creates a new directoy with the given path* |
 
 |Parameter|Behavior|Example|
@@ -141,7 +141,7 @@ En un enlace que apunta a un copia del archivo original
 
 ## **cp**
 |Command|Argument|Action|
-|:-------:|:--------:|------|-------:|
+|:-------:|:--------:|------|
 |cp| [oirign-file-path-1] ... [oirign-file-path-n] [destination-directory-path]| *Copia el archivo de la ruta origen la ruta del directorio destino* |
 
 <table>
