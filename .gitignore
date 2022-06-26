@@ -1,1 +1,3 @@
 *.pdf
+/Tests
+/node_modules

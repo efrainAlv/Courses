@@ -116,12 +116,10 @@ En un enlace que apunta a un copia del archivo original
 #### Manage Files
 
 |Command|Argument|Action|Example|
-|:-------:|:--------:|------|-------:|
-|file| file-path|*Displays the file type of the file path given.*| ```file /etc/passwd ; file /home```|
+|-------|--------|------|-------|
 |touch|file-name|*Creates a new file with the given name in the current directory.*|```touch file1```|
 |cat|file-path|*Displays all the content of the file located in the given paht.*|```cat file1 ; cat /etc/passwd```|
 |less|file-path|*Displays all the content of the file (interactively) located in the given paht.*|```less file1 ; less /etc/passwd```|
-|vim| file-path | *Edit a file (interactively) located in the given paht.*| ```vim /etc/passwd```|
 |vim| file-path | *Edit a file (interactively) located in the given paht.*| ```vim /etc/passwd```|
 |ll| file-path| *Displays the file information located in the given paht.*|```ll /etc/passwd```|
 |head| - number-of-rows file-path| *Displays the content of the first number of rows (by the given number) of the file located in the given paht*|```head -10 /etc/passwd```|
@@ -129,19 +127,55 @@ En un enlace que apunta a un copia del archivo original
 |history| | *Displays the bash history*|```history```|
 |pwd| |*Displays de current directory (psw = Present Working Directory)*|```pwd```|
 |cd| directory-path |*Switch of directory to the directory of path given.*|```cd /etc/```|
-|mkdir|directory-path| *Creates a new directoy with the given path*| ``` mkdir /temp/dir1 ``` |
 
-|Command|Argument|Action|Example|
+---
+
+## **mkdir**
+|Command|Argument|Action|
 |:-------:|:--------:|------|-------:|
-|cp| oirign-file-path destination-file-path| *Copia el archivo*
-<table>
-<thead>
-    <th>Command</th><th>Argument</th><th>Action</th><th>Example</th>
-</thead>
-<tbody>
-    <tr></tr>
-</tbody>
-</table>
+|mkdir| [directory-path]| *Creates a new directoy with the given path* |
 
+|Parameter|Behavior|Example|
+|:-------:|:--------:|------:|
+|  | Normal |``` mkdir /temp/dir1 ``` |
+
+## **cp**
+|Command|Argument|Action|
+|:-------:|:--------:|------|-------:|
+|cp| [oirign-file-path-1] ... [oirign-file-path-n] [destination-directory-path]| *Copia el archivo de la ruta origen la ruta del directorio destino* |
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">Options</th>
+            <th rowspan="2">Behavior</th>
+            <th rowspan="2">Example</th>
+        </tr>
+        <tr>
+            <th>Short</th>
+            <th>Long</th>
+        </tr>
+    </thead>
+    <tbody style="font-family: FreeMono, monospace;">
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Normal</td>
+            <td>cp /temp/direct1/file1 /temp/direct2/direct3/</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Normal</td>
+            <td>cp  file1.txt file2.txt file3.txt  direct2/direct3/</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>-r</td>
+            <td>Recursivo</td>
+            <td>cp -r /temp/files1 /temp/files2</td>
+        </tr>
+    </tbody>
+</table>
 
 ---
