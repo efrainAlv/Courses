@@ -412,7 +412,7 @@ Son creadas y mantenidas por la consola de comandos de Linux. Algunas de estas v
 - **PATH**: Directories to look for executables in
 - **EDITOR**: Default text editor
 
-> Para mostrar todas las variables de entorno usar el comando **env**.
+> Para mostrar todas las variables de entorno usar el comando ``env``.
 
 ---
 
@@ -448,13 +448,13 @@ Los grupos tambien tiene nombre como los usuarios, lo que hace que sea facil tra
 
 ### Primary groups
 
-Es usado por defectos al crear nuevos archivos o directorios, modificar archivos, o ejecutando comandos. Los grupos primarios se pueden asignar a un usuarios con la opcion **-g** seguido del nombre del grupo en el comando **useradd**.
+Es usado por defectos al crear nuevos archivos o directorios, modificar archivos, o ejecutando comandos. Los grupos primarios se pueden asignar a un usuarios con la opcion ``-g`` seguido del nombre del grupo en el comando ``useradd``.
 
     # useradd -g group1 johnDoe
 
 ### Suplementary groups
 
-Un usuario tambien puede tener grupos suplementarios. La membresia de estos grupos estan determinadas por el archivo **/etc/group**. Los grupos suplementarios se pueden asignar con la opcion **-G** seguido del nombre del grupo en el comando **useradd**.
+Un usuario tambien puede tener grupos suplementarios. La membresia de estos grupos estan determinadas por el archivo **/etc/group**. Los grupos suplementarios se pueden asignar con la opcion ``-G`` seguido del nombre del grupo en el comando ``useradd``.
 
 
     # useradd -g group1 -G group2 johnDoe
@@ -462,9 +462,110 @@ Un usuario tambien puede tener grupos suplementarios. La membresia de estos grup
 
 ## Shadow File
 
-El archivo /etc/shadow almacena la contraseña (en un formato encriptado) de las cuentas de los usuarios, con propiedades adicionales relacionadas a la contraseña del usuario. Cada campos está separado por (**:**)
+El archivo /etc/shadow almacena la contraseña (en un formato encriptado) de las cuentas de los usuarios, con propiedades adicionales relacionadas a la contraseña del usuario. Cada campos está separado por (**:**). Para más información sobre aspectos de autenticacion de usuarios, ver el archivo **/etc/login.defs**. 
+
+<image src="./images/shadowFile_1.png" />
+
+Con el siguiente comando se pueden ver informacion sobre la contraseña de un usuario, para este ejemplo sería johnDoe.
+
+    $ change -l johnDoe
+
+### Password directive
+
+Las contraseñas esta encryptada en un formato hash. Debe tener una longitud de 15-20 caracteres, incluyendo caracteres especiales, digitos, etc. Usualmente la contraseña sigue el siguiente formato.
+
+- #### ``$ id $ salt $ hashed``
+    - El id es el algoritmo usado en GNU/Linux, que son 5.
+        - ``$1$`` **MD**
+        - ``$2a$`` **Blowfish**
+        - ``$2y$`` **Blowfish**
+        - ``$5$`` **SHA-256**
+        - ``$6$`` **SHA-512**
+
+## ID Ranges
+
+<table>
+    <thead>
+        <th>No.</th>
+        <th>User</th>
+        <th>Range</th>
+        <th>Example</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Superuser</td>
+            <td>0</td>
+            <td>root user</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>System users (statics)</td>
+            <td>1-200</td>
+            <td>bin, daemon, adm, lp, sync, shutdown, halt, mail</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>System users (dynamics)</td>
+            <td>201-999</td>
+            <td>Packages, groups</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Regular users</td>
+            <td>1000+</td>
+            <td>johnDoe</td>
+        </tr>
+    </tbody>
+</table>
+
+## Sudoers
+
+El comando ``sudo`` basicamente permtite a usuarios ejecutar un comando como otro usuario. Comunmente es usado para permitir a usuarios basicos ejecutar comandos que estan reservados para el usuario root (usualmente el administrador), tales como ``kill``, ``mount``, ``adduser``.
+
+El comando ``visudo`` es una forma segura de editar el archivo **/etc/sudoers** en UNIX y sistemas Linux, ya que este archivo determina cuales usuarios pueden ejecutar tareas administrativas.
+
+#### Syntax
+
+- USER PLACES=(AS_USER)[NOPASSWORD:] COMMANDS
+    - **johnDoe ALL=(ALL) NOPASSWORD: ALL**
+        - **johnDoe**: Usuario al que se le aplicaran los siguienter permisos.
+        - **ALL**: Lugares en donde el comando ``sudo`` podra ser usado.
+        - **(ALL)**: Especifica los usuarios de los que se hereda el comportamiento.
+        - **NOPASSWORD:** : Indica que el usuario no debera ingresar su contraseña para usar el comando ``sudo``.
+        - **ALL**: Comandos que se podra usar con el comando``sudo``
+
+- Ejemplos
+    - johnDoe ALL=(ALL) /usr/bin/yum, /sbin/mount, /sbin/ifconfig
+    - johnDoe ALL=(ALL) /usr/bin/yum, NOPASSWORD:/sbin/mount, NOPASSWORD:/sbin/ifconfig
 
 
+## Related commands
+
+- groupadd
+    - -r
+- groupmod
+    - -n
+    - -g
+- groupdel
+- useradd
+- userdel
+- usermod
+    - -c
+    - -g
+    - -G
+    - -a -G
+    - -d
+    - -m -d
+    - -s
+    - -L
+    - -U
+- passwd
+    - -S
+- whereis
+- change
+    - -l
+    - -M
 ---
 # Commands
 
