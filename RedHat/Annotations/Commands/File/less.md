@@ -1,7 +1,7 @@
 ## **less**
 
 |Command|Argument|Action|
-|:-------:|:--------:|------|-------:|
+|-------|--------|------|-------|
 |less|file-path|*Displays all the content of the file (interactively) located in the given paht.*|
 
 <table>
@@ -327,8 +327,6 @@
 </table>
 
 
+---
 
-
-
-
-
+> #### [GO BACK](../../annotations.md)

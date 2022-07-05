@@ -2,7 +2,7 @@
 ## **cd**
 
 |Command|Argument|Action|
-|:-------:|:--------:|------|-------:|
+|-------|--------|------|-------|
 |cd| [options] [directory-path] |*Switch of directory to the directory of path given.*|
 
 <table>
@@ -79,3 +79,7 @@ back to a slash or the beginning of DIR.
 
 > **Exit Status:**
     >- Returns 0 if the directory is changed, and if $PWD is set successfully when -P is used; non-zero otherwise.
+
+---
+
+> #### [GO BACK](../../annotations.md)

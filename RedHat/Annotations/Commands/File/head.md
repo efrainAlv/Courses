@@ -1,7 +1,7 @@
 ## **head**
 
 |Command|Argument|Action|
-|:-------:|:--------:|------|-------:|
+|-------|--------|------|-------|
 |head| [options] [file-path]| *Displays the content of the first number of rows (by the given number) of the file located in the given paht*|
 
 
@@ -71,3 +71,8 @@
 > NUM may have a multiplier suffix:
 b 512, kB 1000, K 1024, MB 1000*1000, M 1024*1024,
 GB 1000*1000*1000, G 1024*1024*1024, and so on for T, P, E, Z, Y.
+
+
+---
+
+> #### [GO BACK](../../annotations.md)

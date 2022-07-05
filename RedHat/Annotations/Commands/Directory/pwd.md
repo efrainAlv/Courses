@@ -2,7 +2,7 @@
 ## **pwd**
 
 |Command|Argument|Action|
-|:-------:|:--------:|------|-------:|
+|-------|--------|------|-------|
 |pwd| [options] |*Displays de current directory (psw = Present Working Directory)*|
 
 <table>
@@ -51,3 +51,8 @@
 > **Exit Status**:
     >- Returns 0 unless an invalid option is given or the current directory
     > -cannot be read.
+
+
+---
+
+> #### [GO BACK](../../annotations.md)

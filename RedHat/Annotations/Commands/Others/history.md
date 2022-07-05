@@ -2,7 +2,7 @@
 ## **history**
 
 |Command|Argument|Action|
-|:-------:|:--------:|------|-------:|
+|-------|--------|------|-------|
 |history| [options] | *Displays the bash history*|
 
 <table>
@@ -97,3 +97,8 @@ if HISTFILE has a value, that is used, else ~/.bash_history.
 >If the HISTTIMEFORMAT variable is set and not null, its value is used
 as a format string for strftime(3) to print the time stamp associated
 with each displayed history entry.  No time stamps are printed otherwise.
+
+
+---
+
+> #### [GO BACK](../../annotations.md)

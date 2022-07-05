@@ -1,7 +1,7 @@
 
 ## **ll**
 |Command|Argument|Action|
-|:-------:|:--------:|------|-------:|
+|-------|--------|------|-------|
 |ll| [options] [file-path]| *Displays the file information located in the given paht.*|
 
 <table>
@@ -415,3 +415,8 @@ variable can change the settings.  Use the dircolors command to set it.
     >- 0  if OK,
     >- 1  if minor problems (e.g., cannot access subdirectory),
     >- 2  if serious trouble (e.g., cannot access command-line argument).
+
+
+---
+
+> #### [GO BACK](../../annotations.md)

@@ -2,7 +2,7 @@
 ## **mkdir**
 
 |Command|Argument|Action|
-|:-------:|:--------:|------|-------:|
+|-------|--------|------|-------|
 |cp| [options] [oirign-file-path-1] ... [oirign-file-path-n] [destination-directory-path]| *Copia el archivo de la ruta origen la ruta del directorio destino* |
 
 <table>
@@ -254,3 +254,7 @@ the VERSION_CONTROL environment variable.  Here are the values:
 > As a special case, cp makes a backup of SOURCE when the force and backup
 options are given and SOURCE and DEST are the same name for an existing,
 regular file.
+
+---
+
+> #### [GO BACK](../../annotations.md)

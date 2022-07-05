@@ -1,7 +1,7 @@
 
 ## **touch**
 |Command|Argument|Action|
-|:-------:|:--------:|------|-------:|
+|-------|--------|------|-------|
 |touch|file-name|*Creates a new file with the given name in the current directory.*|
 
 <table>
@@ -92,3 +92,7 @@
 
 
 > Note that the -d and -t options accept different time-date formats.
+
+---
+
+> #### [GO BACK](../../annotations.md)

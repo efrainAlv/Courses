@@ -2,7 +2,7 @@
 ## **vim**
 
 |Command|Argument|Action|
-|:-------:|:--------:|------|-------:|
+|-------|--------|------|-------|
 |vim| [options] [file-path...] | *Edit a file (interactively) located in the given paht.*|
 
 <table>
@@ -284,3 +284,8 @@
         </tr>
     </tbody>
 </table>
+
+
+---
+
+> #### [GO BACK](../../annotations.md)

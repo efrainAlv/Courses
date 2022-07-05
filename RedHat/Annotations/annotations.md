@@ -6,6 +6,44 @@ $ character, as shown below.
 
 ---
 
+# Commands
+
+### File Management
+
+- #### [cat](./Commands/File/cat.md)
+- #### [cp](./Commands/File/cp.md)
+- #### [file](./Commands/File/file.md)
+- #### [head](./Commands/File/head.md)
+- #### [less](./Commands/File/less.md)
+- #### [ll](./Commands/File/ll.md)
+- #### [tail](./Commands/File/tail.md)
+- #### [touch](./Commands/File/touch.md)
+- #### [vim](./Commands/File/vim.md)
+
+### Direcotory Management
+
+- #### [cd](./Commands/Directory/cd.md)
+- #### [mkdir](./Commands/Directory/mkdir.md)
+- #### [mv](./Commands/Directory/mv.md)
+- #### [pwd](./Commands/Directory/pwd.md)
+
+### User Management
+
+|Command|Argument|Action|Example|
+|-------|--------|------|-------|
+|useradd|user-name|*Create a new user*|```useradd user1```|
+|passwd|user-name|*Change the selected user's password*|```passwd user1```|
+|su| - user-name| *Switch of user. Type exit to LogOut*|```su - user1```|
+|whoami||*Displays the current username*| ```whoami```|
+
+---
+
+### Other
+
+- #### [history](./Commands/Others/history.md)
+
+---
+
 # Estructura del sistema de archivos
 
 
@@ -539,9 +577,185 @@ El comando ``visudo`` es una forma segura de editar el archivo **/etc/sudoers** 
     - johnDoe ALL=(ALL) /usr/bin/yum, /sbin/mount, /sbin/ifconfig
     - johnDoe ALL=(ALL) /usr/bin/yum, NOPASSWORD:/sbin/mount, NOPASSWORD:/sbin/ifconfig
 
+---
+
+# Permissions
+
+## Permissions Types
+
+Hay 3 tipos de permisos para cada archivo, directorio o aplicacion, estos son los siguientes:
+
+- **``r``** Una categoria de usuario puede leer el archivo.
+- **``w``** Una categoria de usuario puede escribir en el archivo.
+- **``x``** categoria de usuario puede ejecutar el archivo.
+
+Los permisos se asignan en un conjunto de 3 permisos, es decir, cada categoria de usuario podría leer, escribir y ejecutar un archivo, o solo leerlo. En caso de que no cuente con algun permiso, se usa el guion (-) para denotar la ausencia de este. Por ejemplo
+
+**``rwx``** Puede leer, escribir y ejecutar.
+**``r-x``** Puede leer y ejecutar.
+**``--x``** Solo puede ejecutar.
+
+## User categorys
+
+Cada conjunto de permisos se asigna a 3 categorias, estas son:
+
+- **Owner**: El dueño del archivo/directorio/aplicacion
+- **Group**: Grupo al que le pertenece el archivo/directorio/aplicacion
+- **Other**: Todos los usuarios cona acceso al sistema.
+
+![alt](./images/permissions_1.png)
+
+
+## Files Permissions
+
+Con el comando ``ls -l <file-path>`` se pueden ver los permisos e informacion sobre el archivo, por ejemplo:
+
+    ls -l myFile.txt
+
+##### Output:
+
+![alt](./images/permissions_2.png)
+
+### Abdolute and Symbolic mode
+
+Como se explicó anteriormente, hay 3 tipos de permisos, ``r``, ``w`` y ``x``, estos tienen sus equivalentes:
+
+<table>
+    <thead>
+        <th>Permission type</th>
+        <th>Symbolic</th>
+        <th>Absolute</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Read</td>
+            <td>r</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>Write</td>
+            <td>w</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>Execute</td>
+            <td>x</td>
+            <td>1</td>
+        </tr>
+    </tbody>
+</table>
+
+A cada categoria de grupo se le asigna la suma de los permisos simbolicos, es decir, si el dueño del archivo tiene los 3 permisos, la suma de estos seria 7. Entonces se puede decir que 7 representa acceso completo y 0 ningun permiso. A continuacion algunos ejemplos:
+
+
+<table style="text-align:center;">
+    <thead>
+        <tr>
+            <th colspan="6">Permissions</th>
+            <th rowspan="3">Absolute value</th>
+        </tr>
+        <tr>
+            <th colspan="2">Owner</th>
+            <th colspan="2">Group</th>
+            <th colspan="2">All Others</th>
+        </tr>
+        <tr>
+            <th colspan="1">Symbolic</th>
+            <th colspan="1">Absolute</th>
+            <th colspan="1">Symbolic</th>
+            <th colspan="1">Absolute</th>
+            <th colspan="1">Symbolic</th>
+            <th colspan="1">Absolute</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>rwx</td>
+            <td>7</td>
+            <td>rwx</td>
+            <td>7</td>
+            <td>rwx</td>
+            <td>7</td>
+            <td>777</td>
+        </tr>
+        <tr>
+            <td>rw-</td>
+            <td>6</td>
+            <td>r--</td>
+            <td>4</td>
+            <td>r--</td>
+            <td>4</td>
+            <td>644</td>
+        </tr>
+        <tr>
+            <td>r--</td>
+            <td>4</td>
+            <td>rw-</td>
+            <td>6</td>
+            <td>--x</td>
+            <td>1</td>
+            <td>461</td>
+        </tr>
+        <tr>
+            <td>-wx</td>
+            <td>5</td>
+            <td>-w-</td>
+            <td>2</td>
+            <td>---</td>
+            <td>0</td>
+            <td>520</td>
+        </tr>
+        <tr>
+            <td>rw-</td>
+            <td>6</td>
+            <td>---</td>
+            <td>0</td>
+            <td>---</td>
+            <td>0</td>
+            <td>600</td>
+        </tr>
+    </tbody>
+</table>
+
+#### chmod
+
+El comando ``chmod`` se utiliza para cambiar los permisos de un archivo/directorio. Se puede usar de 2 formas, haciendo referencia a los permisos con numero o con sus simbolos.
+
+- ##### Absolute value
+Para este caso hay que conocer el valor absoluto del permiso que se le quiere dar, por ejemplo:
+
+    $ sudo chmod 777 myFile.txt
+
+
+- ##### Symbolic value
+Para este caso hay que conocer algunas abreviaturas, sin olvidar los principales ``r``, ``w`` y ``x``.
+
+- **u**: Se refiere a usuarios (Users)
+- **g**: Se refiere a grupos (Groups)
+- **o**: Se refiere a otros (Others)
+- **-**: Revocar
+- **+**: Otorgar
+- **=**: Sobreescribir permisos
+
+**Algunos ejemplos:**
+
+    $ sudo chmod u+rwx johnDoe
+    $ sudo chmod u-x johnDoe
+    $ sudo chmod g+rw group1
+    $ sudo chmod u=r johnDoe
+
+#### chown
+
+Con el comando ``chown`` se puede cambiar al dueño del archivo. Tambien se puede indicar el grupo primario al que pertenece el usuario, por ejemplo:
+
+    $ chown johnDoe myFile.txt
+    $ chown johnDoe:group1 myFile.txt
+
+---
 
 ## Related commands
 
+- id
 - groupadd
     - -r
 - groupmod
@@ -566,32 +780,7 @@ El comando ``visudo`` es una forma segura de editar el archivo **/etc/sudoers** 
 - change
     - -l
     - -M
----
-# Commands
-
-
-#### Syntaxis
-
-- Concatenate commands with semi colon
-
-        ;   ->  date;uptime
-
-#### Manage Users
-
-|Command|Argument|Action|Example|
-|-------|--------|------|-------|
-|useradd|user-name|*Create a new user*|```useradd user1```|
-
-|passwd|user-name|*Change the selected user's password*|```passwd user1```|
-
-|su| - user-name| *Switch of user. Type exit to LogOut*|```su - user1```|
-
-|whoami||*Displays the current username*| ```whoami```|
-
-
-#### Manage Files
-
-|Command|Argument|Action|Example|
-|-------|--------|------|-------|
+- -chmod
+- -chown
 
 ---

@@ -1,7 +1,7 @@
 
 ## **cat**
 |Command|Argument|Action|
-|:-------:|:--------:|------|-------:|
+|-------|--------|------|-------|
 |cat|file-path|*Displays all the content of the file located in the given paht.*|
 
 <table>
@@ -96,3 +96,7 @@
 > **Examples**:
     cat f - g  Output f's contents, then standard input, then g's contents.
     cat        Copy standard input to standard output.
+
+---
+
+> #### [GO BACK](../../annotations.md)
