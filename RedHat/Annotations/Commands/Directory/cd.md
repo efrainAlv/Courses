@@ -2,7 +2,7 @@
 ## **cd**
 
 |Command|Argument|Action|
-|-------|--------|------|-------|
+|---|---|---|---|
 |cd| [options] [directory-path] |*Switch of directory to the directory of path given.*|
 
 <table>
