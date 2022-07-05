@@ -44,14 +44,14 @@ $ character, as shown below.
 
 ---
 
-# Estructura del sistema de archivos
+# File System Structure
 
 
 ![alt](./images/systemDirectories.png)
 
 ---
 
-# Tipos de archivos
+# File Types
 
 Se pueden identificar por el primer caracter con comando **ls -ld file**.
 
@@ -595,13 +595,13 @@ Los permisos se asignan en un conjunto de 3 permisos, es decir, cada categoria d
 **``r-x``** Puede leer y ejecutar.
 **``--x``** Solo puede ejecutar.
 
-## User categorys
+## User categories
 
 Cada conjunto de permisos se asigna a 3 categorias, estas son:
 
 - **Owner**: El dueño del archivo/directorio/aplicacion
 - **Group**: Grupo al que le pertenece el archivo/directorio/aplicacion
-- **Other**: Todos los usuarios cona acceso al sistema.
+- **Other**: Todos los usuarios con acceso al sistema.
 
 ![alt](./images/permissions_1.png)
 
@@ -751,10 +751,71 @@ Con el comando ``chown`` se puede cambiar al dueño del archivo. Tambien se pued
     $ chown johnDoe myFile.txt
     $ chown johnDoe:group1 myFile.txt
 
+## Special Permissions
+
+### SUID (setuid)
+
+Si el bit SUID está en un archivo y un usuario los ejecuta, el proceso tendrá los mismos permisos que el dueli del archivo que está siendo ejecutado.
+
+**Por ejemplo**, el comando ``passwd`` tiene el bit SUID habilitado. Cuando un usuarios normal cambia su contraseña este comando actualiza algunos archivos como /etc/passwd y /etc/shadow los cuales no pueden ser actualizados por cuentas no-root. Por lo que el proceso del comando ``passwd`` siempre corre con permisos de usuario root.
+
+Para agregar el bit de SUID a los permisos se puede expresar de 2 formas, ``s`` y ``S``.
+
+- ##### s
+Indica que el usuario tiene los 3 permisos de Read, Write y Execute ``rwx``. Por ejemplo
+
+    # chmod u+s myFile.txt
+    # ls -l myFile.txt
+    >   -rwsr-xr-x 1 jonhDoe group1 159 Jul  4 16:46 myFile.txt
+
+- ##### S
+Indica que el usuario solo tiene 2 permisos de Read y Write ``rw-``. Por ejemplo
+    
+    # chmod 4655 myFile.txt
+    # ls -l myFile.txt
+    >   -rwSr-xr-x 1 jonhDoe group1 159 Jul  4 16:46 myFile.txt
+
+### SGIUD (setgid)
+
+Al igual que SUID, el proceso tendra los mismos permisos que el grupo del archivo siendo ejecutado. Si el SIGD bit es etablecido en un directorio, el grupo dueño será el mismo de forma recursiva, es decir, todos los archivos y subdirectorios dentro del directorio raiz.
+
+Su uso es similar al de SUID. A continuacion un ejemplo:
+
+    # chmod g+s myFile.txt
+    # ls -l myFile.txt
+    >   -rwxr-Sr-x 1 jonhDoe group1 159 Jul  4 16:46 myFile.txt
+
+> **Recordar**: Si en los permisos aparece la letra ``s`` significa que tiene los 3 permisos (``rwx``), de lo contrario si tiene la letra ``S`` solo cuenta con 2 permisos (``rw-``).
+
+## Sticky Bit
+
+Es usado para indicar permisos especiales para archivos y directorios. Si un directorio tiene el Sticky Bit habilitado restringirá la eliminacion del contenido del mismo. Puede ser removido por el usuario root o cualquier usuario que tenga permisos sobre el. Esto puede ser útil para archivos de acceso publico como el directorio **/temp**.
+
+El Sticky Bit se puede identificar con la letra ``t`` al final de la cadena de permisos. Para establecer dicho bit se ejecuta con el comando ``chmod`` de la siguiente forma:
+
+    # chmod 1777 /newDirectory
+    # ls -ltrd /newDirectory
+    >   drwxrwxrwt 1 jonhDoe group1 159 Jul  4 16:46 newDirectory/
+
+Como se puede observar, se le agrega un **1** al inicio del valor absoluto del permiso. Tambien se puede ver que la letra ``t`` ocupa el lugar de la ``x`` en la parte de permisos de **All Others**
+
+> **Recordar**: Si en los permisos aparece la letra ``t`` significa que tiene los 3 permisos (``rwx``), de lo contrario si tiene la letra ``T`` solo cuenta con 2 permisos (``rw-``).
+
+---
+
+# Process Monitoring
+
+## Linux Load Average Calculation
+
+Representa la carga percivida en un periodo de tiempo del sistema. Linux determina esto reportando cuantos procesos estan listo para correr en el CPU, y cuantos procesos estan esperando por I/O de disco o red para ser completados.
+
+
 ---
 
 ## Related commands
 
+- uptime
+- lscpu
 - id
 - groupadd
     - -r
