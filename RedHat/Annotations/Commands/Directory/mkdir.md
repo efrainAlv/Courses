@@ -2,7 +2,7 @@
 ## **mkdir**
 
 |Command|Argument|Action|
-|-------|--------|------|-------|
+|---|---|---|
 |mkdir| [options] directory-path| *Creates a new directoy with the given path* |
 
 <table>
@@ -68,4 +68,4 @@
 
 ---
 
-> #### [GO BACK](../../annotations.md)
+> #### [GO BACK](../../home.md)

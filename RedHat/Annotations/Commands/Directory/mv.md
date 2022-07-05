@@ -2,7 +2,7 @@
 ## mv
 
 |Command|Argument|Action|
-|-------|--------|------|-------|
+|---|---|---|
 |mv|[OPTION]... [-T] SOURCE DEST|*Moves one directory to another.*|
 |mv|[OPTION]... SOURCE... DIRECTORY|*Moves one directory to another.*|
 |mv|[OPTION]... -t DIRECTORY SOURCE...|*Moves one directory to another.*|
@@ -114,4 +114,4 @@
 
 ---
 
-> #### [GO BACK](../../annotations.md)
+> #### [GO BACK](../../home.md)

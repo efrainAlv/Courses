@@ -2,7 +2,7 @@
 ## **pwd**
 
 |Command|Argument|Action|
-|-------|--------|------|-------|
+|---|---|---|
 |pwd| [options] |*Displays de current directory (psw = Present Working Directory)*|
 
 <table>
@@ -55,4 +55,4 @@
 
 ---
 
-> #### [GO BACK](../../annotations.md)
+> #### [GO BACK](../../home.md)

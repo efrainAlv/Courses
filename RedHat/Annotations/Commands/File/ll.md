@@ -1,7 +1,7 @@
 
 ## **ll**
 |Command|Argument|Action|
-|-------|--------|------|-------|
+|---|---|---|
 |ll| [options] [file-path]| *Displays the file information located in the given paht.*|
 
 <table>
@@ -419,4 +419,4 @@ variable can change the settings.  Use the dircolors command to set it.
 
 ---
 
-> #### [GO BACK](../../annotations.md)
+> #### [GO BACK](../../home.md)

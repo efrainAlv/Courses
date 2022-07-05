@@ -1,7 +1,7 @@
 ## **head**
 
 |Command|Argument|Action|
-|-------|--------|------|-------|
+|---|---|---|
 |head| [options] [file-path]| *Displays the content of the first number of rows (by the given number) of the file located in the given paht*|
 
 
@@ -75,4 +75,4 @@ GB 1000*1000*1000, G 1024*1024*1024, and so on for T, P, E, Z, Y.
 
 ---
 
-> #### [GO BACK](../../annotations.md)
+> #### [GO BACK](../../home.md)

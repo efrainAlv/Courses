@@ -1,7 +1,7 @@
 
 ## **cat**
 |Command|Argument|Action|
-|-------|--------|------|-------|
+|---|---|---|
 |cat|file-path|*Displays all the content of the file located in the given paht.*|
 
 <table>
@@ -99,4 +99,4 @@
 
 ---
 
-> #### [GO BACK](../../annotations.md)
+> #### [GO BACK](../../home.md)

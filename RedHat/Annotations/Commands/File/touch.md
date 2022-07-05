@@ -1,7 +1,7 @@
 
 ## **touch**
 |Command|Argument|Action|
-|-------|--------|------|-------|
+|---|---|---|
 |touch|file-name|*Creates a new file with the given name in the current directory.*|
 
 <table>
@@ -95,4 +95,4 @@
 
 ---
 
-> #### [GO BACK](../../annotations.md)
+> #### [GO BACK](../../home.md)

@@ -2,7 +2,7 @@
 ## **history**
 
 |Command|Argument|Action|
-|-------|--------|------|-------|
+|---|---|---|
 |history| [options] | *Displays the bash history*|
 
 <table>
@@ -101,4 +101,4 @@ with each displayed history entry.  No time stamps are printed otherwise.
 
 ---
 
-> #### [GO BACK](../../annotations.md)
+> #### [GO BACK](../../home.md)

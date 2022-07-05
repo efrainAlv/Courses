@@ -82,4 +82,4 @@ back to a slash or the beginning of DIR.
 
 ---
 
-> #### [GO BACK](../../annotations.md)
+> #### [GO BACK](../../home.md)

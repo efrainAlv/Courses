@@ -1,6 +1,6 @@
 ## **file**
 |Command|Argument|Action|
-|-------|--------|------|-------|
+|---|---|---|
 |file| [file-path] | *Displays the file type of the file path given.* |
 
 <table>
@@ -201,4 +201,4 @@
 
 ---
 
-> #### [GO BACK](../../annotations.md)
+> #### [GO BACK](../../home.md)

@@ -1,7 +1,7 @@
 ## **tail**
 
 |Command|Argument|Action|
-|-------|--------|------|-------|
+|---|---|---|
 |tail| [options] [file-path]| *Displays the content of the last number of rows (by the given number) of the file located in the given paht*|
 
 
@@ -122,4 +122,4 @@ named file in a way that accommodates renaming, removal and creation.
 
 ---
 
-> #### [GO BACK](../../annotations.md)
+> #### [GO BACK](../../home.md)

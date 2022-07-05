@@ -2,7 +2,7 @@
 ## **mkdir**
 
 |Command|Argument|Action|
-|-------|--------|------|-------|
+|---|---|---|
 |cp| [options] [oirign-file-path-1] ... [oirign-file-path-n] [destination-directory-path]| *Copia el archivo de la ruta origen la ruta del directorio destino* |
 
 <table>
@@ -257,4 +257,4 @@ regular file.
 
 ---
 
-> #### [GO BACK](../../annotations.md)
+> #### [GO BACK](../../home.md)
