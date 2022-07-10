@@ -809,12 +809,16 @@ Como se puede observar, se le agrega un **1** al inicio del valor absoluto del p
 
 Representa la carga percivida en un periodo de tiempo del sistema. Linux determina esto reportando cuantos procesos estan listo para correr en el CPU, y cuantos procesos estan esperando por I/O de disco o red para ser completados.
 
+El numero de carga se basa en el numero de procesos que están listos para correr (Procesos en estado R) y estan esperando I/O para completarse (Proceso en estado D).
+
 
 ---
 
 ## Related commands
 
 - uptime
+- killall
+- top
 - lscpu
 - id
 - groupadd
