@@ -812,10 +812,163 @@ Representa la carga percivida en un periodo de tiempo del sistema. Linux determi
 El numero de carga se basa en el numero de procesos que están listos para correr (Procesos en estado R) y estan esperando I/O para completarse (Proceso en estado D).
 
 
+## Process Management
+
+Es un conjutno de instrucciones cargados en memoria.
+
+- **ps:** Muestra un reporte o captura del proceso actual
+- **ps -a:** Muestra todas las terminales
+- **ps -e:** Lista todos los procesos
+- **ps -o:** (Propiedades personalizadas)
+- **ps ao tty,comm,pid,%mem,%cpu:** Muestra las especificaciones de cada proceso.
+- **ps aux:** Muestra todos los procesos, con columnas en las que el usuario puede estar interesado e incluye procesos sin una terminal de control.
+![alt](./images/process-monitoring_1.png)
+- **ps lax:** Provee detelles más tecnicos.
+![alt](./images/process-monitoring_2.png)
+- **ps -ef:** Muestra todos los procesos, parecido a lax.
+![alt](./images/process-monitoring_3.png)
+
+
+#### Starting a process
+
+Cuando se inicia un proceso (ejecutar un comando) hay dos formas de hacerlo, **Foreground y Background**.
+
+#### Foreground processes
+
+Por defecto, cada procesos que se inicia corre en modo **Foreground**. Estos procesos obtienen un input del teclado y envian el output a la pantalla.
+
+Lo que caracteriza a este tipo de procesos es que mientras se ejecutan, no se pueden ejecutar otros comandos, es decir, deben terminar para poder ejecutar otro.
+
+#### Background processes
+
+Se ejecutan sin tener que estar conectados al teclado. Si el **Background process** requiere un input del teclado, este espera.
+
+A diferencia de los **Foreground processes** este puede ejecutar más comandos, es decir, no hay que esperar parar que se terminen para poder ejecutar otro.
+
+La forma más facil de ejecutar un **Background Process** es agregando el simbolo ``&`` al final del comando.
+
+#### Process Stat Codes
+
+<table>
+    <thead>
+        <th>Stat code</th>
+        <th>Stat Description</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>D</td>
+            <td>Uninterruptible sleep (Usualmente I/O)</td>
+        </tr>
+        <tr>
+            <td>R</td>
+            <td>Estado en el que el proceso esta en ejecucion o listo para ejecutarse.</td>
+        </tr>
+        <tr>
+            <td>S</td>
+            <td>Interruptible sleep (Esperando a que un evento se complete)</td>
+        </tr>
+        <tr>
+            <td>T</td>
+            <td>Stopped. Una vez el proceso se haya completado, este proceso ocurre. Este proceso puede ser reiniciado.</td>
+        </tr>
+        <tr>
+            <td>Z</td>
+            <td>Defunct (Zombie). Es este estado el proceso sera terminado y la informacion aun estara disponible en la tabla de procesos.</td>
+        </tr>
+        <tr>
+            <td>W</td>
+            <td>Paging.</td>
+        </tr>
+    </tbody>
+</table>
+
+## Systemd
+
+Systemd es un daemon que maneja el arranque para Linux, incluyendo el servicio ``startup`` y servicio administrativo en general. systemd reduce drasticamente los tiempos de arranque, ya que ofrece servicio de arranque on-demand y controles de dependencia transaccional.
+
+systemd es una contruccion basica de bloques para el sistema de Linux. Provee un administrador de sistema y servicio que se ejecuta como **PID 1**.
+
+#### Caracteristicas de systemd
+
+- **Parallelization**: capacidades para aumetar la rapidez del arranque (boot) de un sistema. (Iniciar multiples servicios simultaneamente).
+
+- **Logging**: Desde el momento que el disco inicial de RAM es montado para iniciar el Kernel de Linux hasta el apagado final del sistema, todos los log messages son almacenados por el nuevo systemd journal. Antes que el systemd jorunal existiera, los mensaje de los arranques iniciales se perdian, requiriendo debuggear los problemas de arranque atraves de los mensajes en pantalla.
+
+- **Dependencies**: Con systemd, un conjunto explicito de dependencias puede ser definidos por cada servicio, en vez de ser implicito por orden del arranque (boot). Esto permite a un servicio iniciar en cualquier punto donde las dependecias se encuentren. De esta forma, muchos servicios pueden iniciar al mismo tiempo, haciendo el proceso de arranque (boot) más rapido.
+
+
+#### systemd Units
+
+systemd utiliza unidades (units) para administrar diferentes tipos de objetos. Algunos tipos de unidades (units) son los siguientes:
+
+
+<table>
+    <thead>
+        <th>Unit type</th>
+        <th>Description</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Service units</td>
+            <td>Tienen una extension .service y representan servicios del sistema. Este tipo de unidad es usado para iniciar daemos accesados frecuentemente, como un servidor web.</td>
+        </tr>
+        <tr>
+            <td>Socket units</td>
+            <td>Tienen una extension .socket y representan sockets de procesos de comunicacion internos (IPC) que sustemd debería monitorear.</td>
+        </tr>
+        <tr>
+            <td>Path units</td>
+            <td>Tienen una extension .path. Son comunmente usados por servicios los cuales usando spool directories como un sistema de impresion.</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 ## Related commands
 
+- cockpit
+- firewall-cmd
+- find
+- updatedb
+- locate
+- lsof
+- lsblk
+- unmount
+- mount
+- mkfs
+- pvs
+- fdisk
+- hostname
+- hostnamectl
+- ip
+- nmcli
+- du
+- scp
+- tar
+- logger
+- more
+- reboot
+- df
+	- h
+- journalctl
+- semanage
+- w
+- ssh
+- ssh-copy-id
+- systemctl
+- ps
 - uptime
 - killall
 - top
